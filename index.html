@@ -28,7 +28,7 @@
     [data-deco] { display: none !important; }
     [data-bento] { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
     [data-bento] > * { grid-column: auto !important; }
-    [data-stats] { grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)) !important; }
+
   }
   @media (max-width: 760px) {
     [data-navlink] { display: none !important; }
@@ -41,7 +41,7 @@
 <div style="max-width: 100%; overflow-x: clip;">
 
   <nav style="position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 4px; padding: 6px; border: 2px solid #1B1A17; border-radius: 999px; background: rgba(242,239,230,.72); backdrop-filter: blur(14px); box-shadow: 4px 4px 0 #1B1A17;">
-    <a href="#top" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; background: #D6452C;"><span style="display: block; width: 12px; height: 12px; background: #F2EFE6;"></span></a>
+    <a href="#top" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: #D6452C; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17"><span style="display: block; width: 9px; height: 9px; background: currentColor;"></span>TOP</a>
     <a href="#about" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">ABOUT</a>
     <a href="#works" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">WORKS</a>
     <a href="#play" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">PLAY</a>
@@ -123,8 +123,8 @@
       </div>
 
       <div data-reveal="" style="grid-column: span 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: #1B1A17; color: #F2EFE6; text-align: center;">
-        <div style="width: 96px; height: 96px; border-radius: 999px; border: 3px dashed #F2C230; display: flex; align-items: center; justify-content: center; animation: spin 24s linear infinite;">
-          <span style="display: block; width: 34px; height: 34px; background: #D6452C; border-radius: 999px 999px 999px 0;"></span>
+        <div style="width: 96px; height: 96px; border-radius: 999px; border: 3px dashed #F2C230; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: 'Noto Emoji', monospace; font-size: 40px; line-height: 1; color: #F2C230;">🌙</span>
         </div>
         <div>
           <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px;">数字 → 現場 → 実装</div>
@@ -142,23 +142,26 @@
         </div>
       </div>
 
-      <div data-reveal="" data-stats="" style="grid-column: span 5; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
-          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #D6452C;">04</div>
-          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">LANGUAGES</div>
+      <div data-reveal="" data-stats="" style="grid-column: span 5; display: flex; flex-direction: column; padding: 8px 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55); backdrop-filter: blur(10px);">
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0;">
+          <span style="flex-shrink: 0; width: 10px; height: 10px; border-radius: 999px; background: #D6452C;"></span>
+          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">R / Python</div>
+          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">分析・モデリング</div>
         </div>
-        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
-          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #2C5FD6;">06</div>
-          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">IN SPORT</div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1.5px solid rgba(27,26,23,.14);">
+          <span style="flex-shrink: 0; width: 10px; height: 10px; background: #2C5FD6;"></span>
+          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">C# / SQL</div>
+          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">実務での開発</div>
         </div>
-        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
-          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #1B1A17;">∞</div>
-          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">CURIOSITY</div>
+        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1.5px solid rgba(27,26,23,.14);">
+          <span style="flex-shrink: 0; width: 10px; height: 10px; border-radius: 999px 0 999px 0; background: #F2C230; border: 1px solid #1B1A17;"></span>
+          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">English</div>
+          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">マルタ留学 5週間</div>
         </div>
       </div>
 
       <div data-reveal="" style="grid-column: span 4; display: flex; align-items: center; gap: 18px; padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: #D6452C; color: #F7EFE8;">
-        <div style="flex-shrink: 0; width: 54px; height: 54px; border: 3px solid #F7EFE8; border-radius: 999px 0 999px 0;"></div>
+        <div style="flex-shrink: 0; width: 54px; height: 54px; border: 3px solid #F7EFE8; border-radius: 999px 999px 8px 8px;"></div>
         <p style="margin: 0; font-size: 14px; line-height: 1.9;">壁も課題も、いきなり全部は登れない。手が届く一手を積み重ねるのが、いちばん速いと思っています。</p>
       </div>
     </div>
@@ -170,13 +173,13 @@
       <span style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A;">02 ／ 好きなもの・気になるもの</span>
     </div>
     <p data-reveal="" style="margin: 0 0 28px; max-width: 520px; font-size: 14px; line-height: 2; color: #45423B;">経歴には書けないけれど、たぶんこっちの方が私を説明しています。</p>
-    <div data-icons="" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 14px;">
+    <div data-icons="" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 14px;">
       <sc-for list="{{ icons }}" as="c" hint-placeholder-count="12">
-        <div data-reveal="" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: {{ c.radius }}; background: {{ c.bg }}; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;" style-hover="transform:translateY(-5px) rotate(-2deg);box-shadow:6px 8px 0 rgba(27,26,23,.16)">
-          <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: {{ c.ink }};">{{ c.glyph }}</span>
-          <div style="text-align: center;">
-            <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: {{ c.ink }}; opacity: .6;">{{ c.en }}</div>
-            <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: {{ c.ink }};">{{ c.jp }}</div>
+        <div data-reveal="" data-tile="" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: {{ c.radius }}; background: {{ c.bg }}; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;" style-hover="transform:translateY(-5px) rotate(-2deg);box-shadow:6px 8px 0 rgba(27,26,23,.16)">
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: {{ c.ink }};">{{ c.glyph }}</span>
+          <div style="max-width: 100%; text-align: center;">
+            <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .1em; color: {{ c.ink }}; opacity: .6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ c.en }}</div>
+            <div style="margin-top: 3px; font-size: 11.5px; font-weight: 500; line-height: 1.4; color: {{ c.ink }}; word-break: keep-all;">{{ c.jp }}</div>
           </div>
         </div>
       </sc-for>
@@ -276,9 +279,55 @@
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:[&quot;#D6452C&quot;,&quot;#2C5FD6&quot;,&quot;#F2C230&quot;],&quot;tsType&quot;:&quot;string[]&quot;,&quot;options&quot;:[[&quot;#D6452C&quot;,&quot;#2C5FD6&quot;,&quot;#F2C230&quot;],[&quot;#E2604A&quot;,&quot;#1F7A5C&quot;,&quot;#F0B429&quot;],[&quot;#C2417E&quot;,&quot;#3D46C4&quot;,&quot;#F2C230&quot;],[&quot;#D95A2B&quot;,&quot;#2E6F8E&quot;,&quot;#E8C547&quot;]],&quot;section&quot;:&quot;見た目&quot;},&quot;shapeLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;バウハウス&quot;,&quot;options&quot;:[&quot;バウハウス&quot;,&quot;すべて丸角&quot;,&quot;ピル/円&quot;,&quot;直線的&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;見た目&quot;},&quot;revealStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;フェードアップ&quot;,&quot;options&quot;:[&quot;フェードアップ&quot;,&quot;横からスライド&quot;,&quot;ズームイン&quot;,&quot;なし&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;動き&quot;}}">
 class Component extends DCLogic {
+  static BASE = ['#D6452C', '#2C5FD6', '#F2C230'];
+
+  applyTheme() {
+    const pal = this.props.palette;
+    const shape = this.props.shapeLanguage || 'バウハウス';
+    const root = this.dcRoot || document;
+
+    // --- palette remap over inline styles ---
+    if (Array.isArray(pal) && pal.length >= 3) {
+      root.querySelectorAll('[style]').forEach((el) => {
+        if (el.dataset.origStyle === undefined) el.dataset.origStyle = el.getAttribute('style');
+        let t = el.dataset.origStyle;
+        Component.BASE.forEach((hex, i) => {
+          t = t.split(hex).join(pal[i]).split(hex.toLowerCase()).join(pal[i]);
+        });
+        if (t !== el.getAttribute('style')) el.setAttribute('style', t);
+      });
+    }
+
+    // --- shape language ---
+    const map = { 'バウハウス': null, 'すべて丸角': '22px', 'ピル/円': '999px', '直線的': '2px' };
+    const r = map[shape];
+    root.querySelectorAll('[data-tile], [style*="border-radius: 26px"], [data-radius-managed]').forEach((el) => {
+      if (el.dataset.radiusManaged === undefined) {
+        el.dataset.radiusManaged = '';
+        el.dataset.origRadius = el.style.borderRadius || '';
+      }
+      el.style.borderRadius = r || el.dataset.origRadius;
+    });
+  }
+
+  componentDidUpdate() { this.applyTheme(); }
+
   componentDidMount() {
+    this.dcRoot = document;
+    this.applyTheme();
+    const rev = this.props.revealStyle || 'フェードアップ';
+    const st = document.createElement('style');
+    st.textContent = rev === 'なし'
+      ? '[data-reveal]{opacity:1 !important;transform:none !important;}'
+      : rev === '横からスライド'
+        ? '[data-reveal]{transform:translateX(-34px) !important;}[data-reveal].in{transform:none !important;}'
+        : rev === 'ズームイン'
+          ? '[data-reveal]{transform:scale(.94) !important;}[data-reveal].in{transform:none !important;}'
+          : '';
+    if (st.textContent) document.head.appendChild(st);
+    this._styleEl = st;
     const io = new IntersectionObserver((es) => {
       es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
@@ -294,17 +343,20 @@ class Component extends DCLogic {
     return {
       icons: [
         { glyph: '🐧', en: 'PENGUIN', jp: 'ペンギン', bg: '#2C5FD6', ink: '#F2EFE6', radius: '999px 999px 26px 26px' },
-        { glyph: '🧗', en: 'CLIMBING', jp: 'リード壁', bg: '#D6452C', ink: '#F7EFE8', radius: '26px' },
+        { glyph: '🧗', en: 'CLIMBING', jp: 'リードクライミング', bg: '#D6452C', ink: '#F7EFE8', radius: '26px' },
         { glyph: '🎾', en: 'TENNIS', jp: 'テニス', bg: '#F2C230', ink: '#1B1A17', radius: '999px' },
-        { glyph: '🏛', en: 'MUSEUM', jp: '博物館めぐり', bg: '#EAE5D8', ink: '#1B1A17', radius: '26px 999px 26px 999px' },
-        { glyph: '🖼', en: 'ART', jp: '美術館めぐり', bg: '#1B1A17', ink: '#F2C230', radius: '26px' },
+        { glyph: '🏺', en: 'MUSEUM & ART', jp: '博物館・美術館', bg: '#EAE5D8', ink: '#1B1A17', radius: '26px 26px 26px 999px' },
+        { glyph: '🥗', en: 'CELERY', jp: 'セロリ', bg: '#1B1A17', ink: '#F2C230', radius: '26px' },
         { glyph: '🎷', en: 'JAZZ', jp: 'ジャズ', bg: '#F2C230', ink: '#1B1A17', radius: '26px 26px 999px 999px' },
         { glyph: '🎧', en: 'CITY POP', jp: 'シティポップ', bg: '#EAE5D8', ink: '#2C5FD6', radius: '26px' },
-        { glyph: '⚾', en: 'LIONS', jp: '西武ライオンズ', bg: '#2C5FD6', ink: '#F2EFE6', radius: '999px' },
-        { glyph: '🍜', en: 'MALATANG', jp: '麻辣湯', bg: '#D6452C', ink: '#F7EFE8', radius: '999px 26px 999px 26px' },
-        { glyph: '🧸', en: 'SOONSOON', jp: 'スンスン', bg: '#EAE5D8', ink: '#D6452C', radius: '26px' },
-        { glyph: '🧮', en: 'FINANCE', jp: '数理ファイナンス', bg: '#1B1A17', ink: '#F2EFE6', radius: '999px' },
-        { glyph: '✈', en: 'MALTA', jp: 'マルタの5週間', bg: '#F2C230', ink: '#1B1A17', radius: '26px 999px 999px 26px' }
+        { glyph: '⚾', en: 'BASEBALL', jp: '野球観戦', bg: '#2C5FD6', ink: '#F2EFE6', radius: '26px 26px 999px 26px' },
+        { glyph: '🍜', en: 'MALATANG', jp: '麻辣湯', bg: '#D6452C', ink: '#F7EFE8', radius: '999px 999px 26px 26px' },
+        { glyph: '🧳', en: 'TRAVEL', jp: '旅行', bg: '#EAE5D8', ink: '#D6452C', radius: '26px' },
+        { glyph: '🧮', en: 'FINANCE', jp: '数理ファイナンス', bg: '#1B1A17', ink: '#F2EFE6', radius: '26px' },
+        { glyph: '🌙', en: 'THE MOON', jp: '月', bg: '#2C5FD6', ink: '#F2C230', radius: '26px 26px 26px 999px' },
+        { glyph: '💬', en: 'MBTI / ENTP', jp: '討論者タイプ', bg: '#D6452C', ink: '#F7EFE8', radius: '999px 999px 26px 26px' },
+        { glyph: '☕', en: 'COFFEE', jp: 'コーヒー', bg: '#EAE5D8', ink: '#1B1A17', radius: '26px' },
+        { glyph: '🫖', en: 'TEA', jp: '紅茶', bg: '#F2C230', ink: '#1B1A17', radius: '26px 26px 26px 999px' }
       ],
       works: [
         { no: 'W-01', glyph: '🏭', ink: '#F7EFE8', title: 'DXクラブ ｜ 中小企業のIT支援と基幹システム開発', desc: '「何から手をつければいいか分からない」段階から伴走し、業務の棚卸しとツール選定を実施。紙とExcelで回っていた作業を、C#とSQLで組んだ基幹システムに置き換えています。', tags: ['C#', 'SQL', '要件定義', '業務改善'], bg: '#F2C230', mark: '#D6452C', radius: '999px' },
