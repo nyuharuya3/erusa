@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Chivo+Mono:wght@400;600&family=Noto+Emoji:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+<title>Keep Climbing</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #F2EFE6; color: #1B1A17; font-family: "Zen Kaku Gothic New", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -23,31 +10,44 @@
   @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  @keyframes tilt { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  .navlink:hover { background: #1B1A17; color: #F2EFE6; }
+  .nav-contact:hover { background: #2C5FD6; }
+  .btn-primary:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 #1B1A17; }
+  .btn-outline:hover { background: #1B1A17; color: #F2EFE6; }
+  .icon-tile:hover { transform: translateY(-5px) rotate(-2deg); box-shadow: 6px 8px 0 rgba(27,26,23,.16); }
+  .work-card:hover { transform: translateY(-6px); box-shadow: 8px 10px 0 rgba(27,26,23,.14); }
+  .contact-link:hover { background: #F2EFE6; color: #1B1A17; }
+  .icon-link { display: block; }
   @media (max-width: 900px) {
     [data-deco] { display: none !important; }
     [data-bento] { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
     [data-bento] > * { grid-column: auto !important; }
-
+    [data-stats] { grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)) !important; }
   }
   @media (max-width: 760px) {
     [data-navlink] { display: none !important; }
     [data-hero-cols] { grid-template-columns: 1fr !important; gap: 24px !important; }
     [data-path-row] { grid-template-columns: 84px 28px minmax(0, 1fr) !important; gap: 12px !important; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { transition: none !important; }
+    [data-deco] { animation: none !important; }
+  }
 </style>
-</helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Chivo+Mono:wght@400;600&family=Noto+Emoji:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <div style="max-width: 100%; overflow-x: clip;">
 
   <nav style="position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 4px; padding: 6px; border: 2px solid #1B1A17; border-radius: 999px; background: rgba(242,239,230,.72); backdrop-filter: blur(14px); box-shadow: 4px 4px 0 #1B1A17;">
-    <a href="#top" style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: #D6452C; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17"><span style="display: block; width: 9px; height: 9px; background: currentColor;"></span>TOP</a>
-    <a href="#about" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">ABOUT</a>
-    <a href="#works" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">WORKS</a>
-    <a href="#play" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">PLAY</a>
-    <a href="#skills" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">SKILLS</a>
-    <a href="#path" data-navlink="" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#1B1A17;color:#F2EFE6">PATH</a>
-    <a href="#contact" style="padding: 8px 16px; border-radius: 999px; background: #1B1A17; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;" style-hover="background:#2C5FD6">CONTACT</a>
+    <a href="#top" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 999px; background: #D6452C;"><span style="display: block; width: 12px; height: 12px; background: #F2EFE6;"></span></a>
+    <a href="#about" data-navlink="" class="navlink" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">ABOUT</a>
+    <a href="#works" data-navlink="" class="navlink" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">WORKS</a>
+    <a href="#play" data-navlink="" class="navlink" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">PLAY</a>
+    <a href="#skills" data-navlink="" class="navlink" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">SKILLS</a>
+    <a href="#path" data-navlink="" class="navlink" style="padding: 8px 14px; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">PATH</a>
+    <a href="#contact" class="nav-contact" style="padding: 8px 16px; border-radius: 999px; background: #1B1A17; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em;">CONTACT</a>
   </nav>
 
   <header id="top" style="position: relative; padding: 132px 32px 64px; max-width: 1240px; margin: 0 auto;">
@@ -74,8 +74,8 @@
     </div>
 
     <div style="position: relative; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;">
-      <a href="#works" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #F2C230; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; box-shadow: 5px 5px 0 #1B1A17;" style-hover="transform:translate(3px,3px);box-shadow:2px 2px 0 #1B1A17">VIEW WORKS <span style="display: block; width: 9px; height: 9px; background: #1B1A17; border-radius: 999px;"></span></a>
-      <a href="#contact" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em;" style-hover="background:#1B1A17;color:#F2EFE6">GET IN TOUCH</a>
+      <a href="#works" class="btn-primary" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 26px; border: 2px solid #1B1A17; border-radius: 999px; background: #F2C230; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; box-shadow: 5px 5px 0 #1B1A17; transition: transform .2s, box-shadow .2s;">VIEW WORKS <span style="display: block; width: 9px; height: 9px; background: #1B1A17; border-radius: 999px;"></span></a>
+      <a href="#contact" class="btn-outline" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; transition: background .2s, color .2s;">GET IN TOUCH</a>
     </div>
   </header>
 
@@ -123,8 +123,8 @@
       </div>
 
       <div data-reveal="" style="grid-column: span 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: #1B1A17; color: #F2EFE6; text-align: center;">
-        <div style="width: 96px; height: 96px; border-radius: 999px; border: 3px dashed #F2C230; display: flex; align-items: center; justify-content: center;">
-          <span style="font-family: 'Noto Emoji', monospace; font-size: 40px; line-height: 1; color: #F2C230;">🌙</span>
+        <div style="width: 96px; height: 96px; border-radius: 999px; border: 3px dashed #F2C230; display: flex; align-items: center; justify-content: center; animation: spin 24s linear infinite;">
+          <span style="display: block; width: 34px; height: 34px; background: #D6452C; border-radius: 999px 999px 999px 0;"></span>
         </div>
         <div>
           <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px;">数字 → 現場 → 実装</div>
@@ -142,26 +142,23 @@
         </div>
       </div>
 
-      <div data-reveal="" data-stats="" style="grid-column: span 5; display: flex; flex-direction: column; padding: 8px 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55); backdrop-filter: blur(10px);">
-        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0;">
-          <span style="flex-shrink: 0; width: 10px; height: 10px; border-radius: 999px; background: #D6452C;"></span>
-          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">R / Python</div>
-          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">分析・モデリング</div>
+      <div data-reveal="" data-stats="" style="grid-column: span 5; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #D6452C;">04</div>
+          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">LANGUAGES</div>
         </div>
-        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1.5px solid rgba(27,26,23,.14);">
-          <span style="flex-shrink: 0; width: 10px; height: 10px; background: #2C5FD6;"></span>
-          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">C# / SQL</div>
-          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">実務での開発</div>
+        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #2C5FD6;">06</div>
+          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">IN SPORT</div>
         </div>
-        <div style="display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1.5px solid rgba(27,26,23,.14);">
-          <span style="flex-shrink: 0; width: 10px; height: 10px; border-radius: 999px 0 999px 0; background: #F2C230; border: 1px solid #1B1A17;"></span>
-          <div style="flex: 1; min-width: 0; font-family: 'Chivo Mono', monospace; font-size: 15px; letter-spacing: .02em; color: #1B1A17;">English</div>
-          <div style="flex-shrink: 0; font-size: 12px; color: #6B665C;">マルタ留学 5週間</div>
+        <div style="padding: 22px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.55);">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: #1B1A17;">∞</div>
+          <div style="margin-top: 6px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A;">CURIOSITY</div>
         </div>
       </div>
 
       <div data-reveal="" style="grid-column: span 4; display: flex; align-items: center; gap: 18px; padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: #D6452C; color: #F7EFE8;">
-        <div style="flex-shrink: 0; width: 54px; height: 54px; border: 3px solid #F7EFE8; border-radius: 999px 999px 8px 8px;"></div>
+        <div style="flex-shrink: 0; width: 54px; height: 54px; border: 3px solid #F7EFE8; border-radius: 999px 0 999px 0;"></div>
         <p style="margin: 0; font-size: 14px; line-height: 1.9;">壁も課題も、いきなり全部は登れない。手が届く一手を積み重ねるのが、いちばん速いと思っています。</p>
       </div>
     </div>
@@ -173,16 +170,91 @@
       <span style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A;">02 ／ 好きなもの・気になるもの</span>
     </div>
     <p data-reveal="" style="margin: 0 0 28px; max-width: 520px; font-size: 14px; line-height: 2; color: #45423B;">経歴には書けないけれど、たぶんこっちの方が私を説明しています。</p>
-    <div data-icons="" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); gap: 14px;">
-      <sc-for list="{{ icons }}" as="c" hint-placeholder-count="12">
-        <div data-reveal="" data-tile="" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: {{ c.radius }}; background: {{ c.bg }}; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;" style-hover="transform:translateY(-5px) rotate(-2deg);box-shadow:6px 8px 0 rgba(27,26,23,.16)">
-          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: {{ c.ink }};">{{ c.glyph }}</span>
-          <div style="max-width: 100%; text-align: center;">
-            <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .1em; color: {{ c.ink }}; opacity: .6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ c.en }}</div>
-            <div style="margin-top: 3px; font-size: 11.5px; font-weight: 500; line-height: 1.4; color: {{ c.ink }}; word-break: keep-all;">{{ c.jp }}</div>
-          </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 14px;">
+      <a data-reveal="" href="curiosity/penguin.html" class="icon-tile icon-link" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 999px 999px 26px 26px; background: #2C5FD6; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F2EFE6;">🐧</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F2EFE6; opacity: .6;">PENGUIN</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F2EFE6;">ペンギン</div>
         </div>
-      </sc-for>
+      </a>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px; background: #D6452C; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F7EFE8;">🧗</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F7EFE8; opacity: .6;">CLIMBING</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F7EFE8;">リード壁</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 999px; background: #F2C230; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #1B1A17;">🎾</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #1B1A17; opacity: .6;">TENNIS</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #1B1A17;">テニス</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px 999px 26px 999px; background: #EAE5D8; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #1B1A17;">🏛</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #1B1A17; opacity: .6;">MUSEUM</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #1B1A17;">博物館めぐり</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px; background: #1B1A17; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F2C230;">🖼</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F2C230; opacity: .6;">ART</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F2C230;">美術館めぐり</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px 26px 999px 999px; background: #F2C230; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #1B1A17;">🎷</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #1B1A17; opacity: .6;">JAZZ</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #1B1A17;">ジャズ</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px; background: #EAE5D8; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #2C5FD6;">🎧</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #2C5FD6; opacity: .6;">CITY POP</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #2C5FD6;">シティポップ</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 999px; background: #2C5FD6; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F2EFE6;">⚾</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F2EFE6; opacity: .6;">LIONS</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F2EFE6;">西武ライオンズ</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 999px 26px 999px 26px; background: #D6452C; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F7EFE8;">🍜</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F7EFE8; opacity: .6;">MALATANG</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F7EFE8;">麻辣湯</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px; background: #EAE5D8; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #D6452C;">🧸</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #D6452C; opacity: .6;">SOONSOON</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #D6452C;">スンスン</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 999px; background: #1B1A17; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #F2EFE6;">🧮</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #F2EFE6; opacity: .6;">FINANCE</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #F2EFE6;">数理ファイナンス</div>
+        </div>
+      </div>
+      <div data-reveal="" class="icon-tile" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; aspect-ratio: 1 / 1; padding: 14px; border: 2px solid #1B1A17; border-radius: 26px 999px 999px 26px; background: #F2C230; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;">
+        <span style="font-family: 'Noto Emoji', monospace; font-size: 38px; line-height: 1; color: #1B1A17;">✈</span>
+        <div style="text-align: center;">
+          <div style="font-family: 'Chivo Mono', monospace; font-size: 9px; letter-spacing: .14em; color: #1B1A17; opacity: .6;">MALTA</div>
+          <div style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #1B1A17;">マルタの5週間</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -192,23 +264,68 @@
       <span style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A;">03 ／ 取り組んできたこと</span>
     </div>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
-      <sc-for list="{{ works }}" as="w" hint-placeholder-count="4">
-        <article data-reveal="" style="display: flex; flex-direction: column; overflow: hidden; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;" style-hover="transform:translateY(-6px);box-shadow:8px 10px 0 rgba(27,26,23,.14)">
-          <div style="position: relative; height: 168px; border-bottom: 2px solid #1B1A17; background: {{ w.bg }}; display: flex; align-items: center; justify-content: center;">
-            <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 78px; background: {{ w.mark }}; border-radius: {{ w.radius }}; border: 3px solid #1B1A17;"><span style="font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: {{ w.ink }};">{{ w.glyph }}</span></div>
-            <span style="position: absolute; top: 12px; left: 14px; font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .14em; color: #1B1A17;">{{ w.no }}</span>
+      <article data-reveal="" class="work-card" style="display: flex; flex-direction: column; overflow: hidden; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;">
+        <div style="position: relative; height: 168px; border-bottom: 2px solid #1B1A17; background: #F2C230; display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 78px; background: #D6452C; border-radius: 999px; border: 3px solid #1B1A17;"><span style="font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: #F7EFE8;">🏭</span></div>
+          <span style="position: absolute; top: 12px; left: 14px; font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .14em; color: #1B1A17;">W-01</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px;">
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.015em;">DXクラブ ｜ 中小企業のIT支援と基幹システム開発</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.95; color: #45423B;">「何から手をつければいいか分からない」段階から伴走し、業務の棚卸しとツール選定を実施。紙とExcelで回っていた作業を、C#とSQLで組んだ基幹システムに置き換えています。</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">C#</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">SQL</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">要件定義</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">業務改善</span>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px;">
-            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.015em;">{{ w.title }}</h3>
-            <p style="margin: 0; font-size: 13px; line-height: 1.95; color: #45423B;">{{ w.desc }}</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
-              <sc-for list="{{ w.tags }}" as="t" hint-placeholder-count="3">
-                <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">{{ t }}</span>
-              </sc-for>
-            </div>
+        </div>
+      </article>
+      <article data-reveal="" class="work-card" style="display: flex; flex-direction: column; overflow: hidden; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;">
+        <div style="position: relative; height: 168px; border-bottom: 2px solid #1B1A17; background: #2C5FD6; display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 78px; background: #F2C230; border-radius: 999px 0 999px 0; border: 3px solid #1B1A17;"><span style="font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: #D6452C;">📊</span></div>
+          <span style="position: absolute; top: 12px; left: 14px; font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .14em; color: #1B1A17;">W-02</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px;">
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.015em;">ゼミ ｜ 数理ファイナンス</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.95; color: #45423B;">確率過程やデリバティブ評価を扱うゼミに所属。RとPythonでモデルを実装し、シミュレーションを回しながら、価格の裏側にある構造を検証しています。</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">R</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">Python</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">確率モデル</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">金融工学</span>
           </div>
-        </article>
-      </sc-for>
+        </div>
+      </article>
+      <article data-reveal="" class="work-card" style="display: flex; flex-direction: column; overflow: hidden; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;">
+        <div style="position: relative; height: 168px; border-bottom: 2px solid #1B1A17; background: #D6452C; display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 78px; background: #2C5FD6; border-radius: 0; border: 3px solid #1B1A17;"><span style="font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: #F2EFE8;">✈</span></div>
+          <span style="position: absolute; top: 12px; left: 14px; font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .14em; color: #1B1A17;">W-03</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px;">
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.015em;">マルタ 語学留学（5週間）</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.95; color: #45423B;">多国籍のクラスに単身で飛び込んだ5週間。英語そのものより「伝わるまで粘る」姿勢が身につき、初対面の相手と関係をつくる度胸がつきました。</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">English</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">異文化</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">単身</span>
+          </div>
+        </div>
+      </article>
+      <article data-reveal="" class="work-card" style="display: flex; flex-direction: column; overflow: hidden; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s;">
+        <div style="position: relative; height: 168px; border-bottom: 2px solid #1B1A17; background: #EAE5D8; display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 78px; height: 78px; background: #2C5FD6; border-radius: 999px 999px 0 999px; border: 3px solid #1B1A17;"><span style="font-family: 'Noto Emoji', monospace; font-size: 34px; line-height: 1; color: #F2EFE6;">🧗</span></div>
+          <span style="position: absolute; top: 12px; left: 14px; font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .14em; color: #1B1A17;">W-04</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 22px;">
+          <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -.015em;">リードクライミング</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 1.95; color: #45423B;">高校で未経験から始め、インターハイ出場水準まで。伸びない時期をどう抜けるかを、体で覚えた3年間でした。</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">継続</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">自己分析</span>
+            <span style="padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em;">目標設計</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -219,24 +336,86 @@
         <span style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A;">04 ／ 道具箱</span>
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-        <sc-for list="{{ skills }}" as="s" hint-placeholder-count="4">
-          <div data-reveal="" style="padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px);">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: {{ s.color }}; border: 2px solid #1B1A17; border-radius: {{ s.radius }};"><span style="font-family: 'Noto Emoji', monospace; font-size: 15px; line-height: 1; color: {{ s.ink }};">{{ s.glyph }}</span></span>
-              <div style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .12em;">{{ s.group }}</div>
+        <div data-reveal="" style="padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #D6452C; border: 2px solid #1B1A17; border-radius: 999px;"><span style="font-family: 'Noto Emoji', monospace; font-size: 15px; line-height: 1; color: #F7EFE8;">🔬</span></span>
+            <div style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .12em;">ANALYZE</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>R（統計モデリング）</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Daily</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 82%; background: #D6452C;"></div></div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
-              <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="3">
-                <div>
-                  <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>{{ it.name }}</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">{{ it.lv }}</span></div>
-                  <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;">
-                    <div style="height: 100%; width: {{ it.w }}; background: {{ s.color }};"></div>
-                  </div>
-                </div>
-              </sc-for>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>Python（データ分析）</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Daily</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 78%; background: #D6452C;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>金融シミュレーション</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Often</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 70%; background: #D6452C;"></div></div>
             </div>
           </div>
-        </sc-for>
+        </div>
+        <div data-reveal="" style="padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #2C5FD6; border: 2px solid #1B1A17; border-radius: 0;"><span style="font-family: 'Noto Emoji', monospace; font-size: 15px; line-height: 1; color: #F2EFE6;">🧱</span></span>
+            <div style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .12em;">BUILD</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>C#</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">実務経験</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 72%; background: #2C5FD6;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>SQL</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">実務経験</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 74%; background: #2C5FD6;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>基幹システム設計</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Often</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 62%; background: #2C5FD6;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div data-reveal="" style="padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #F2C230; border: 2px solid #1B1A17; border-radius: 999px 0 999px 0;"><span style="font-family: 'Noto Emoji', monospace; font-size: 15px; line-height: 1; color: #1B1A17;">💹</span></span>
+            <div style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .12em;">BUSINESS</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>経営 / ミクロ経済</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">専攻</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 80%; background: #F2C230;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>業務ヒアリング</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Often</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 70%; background: #F2C230;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>課題の言語化</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Strong</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 76%; background: #F2C230;"></div></div>
+            </div>
+          </div>
+        </div>
+        <div data-reveal="" style="padding: 26px; border: 2px solid #1B1A17; border-radius: 26px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px);">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #1B1A17; border: 2px solid #1B1A17; border-radius: 999px 999px 0 0;"><span style="font-family: 'Noto Emoji', monospace; font-size: 15px; line-height: 1; color: #F2C230;">🧠</span></span>
+            <div style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .12em;">MINDSET</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>継続する力</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Strong</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 90%; background: #1B1A17;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>未経験から立ち上げる</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Strong</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 86%; background: #1B1A17;"></div></div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px;"><span>チームで動く</span><span style="font-family: 'Chivo Mono', monospace; font-size: 11px; color: #7A756A;">Often</span></div>
+              <div style="height: 8px; border: 1.5px solid #1B1A17; border-radius: 999px; overflow: hidden; background: #F2EFE6;"><div style="height: 100%; width: 74%; background: #1B1A17;"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -247,16 +426,46 @@
       <span style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A;">05 ／ これまで</span>
     </div>
     <div style="display: flex; flex-direction: column;">
-      <sc-for list="{{ path }}" as="p" hint-placeholder-count="4">
-        <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
-          <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">{{ p.year }}</div>
-          <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: {{ p.color }}; border-radius: {{ p.radius }}; border: 2px solid #1B1A17;"></span></div>
-          <div>
-            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">{{ p.title }}</div>
-            <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">{{ p.desc }}</p>
-          </div>
+      <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
+        <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">中学</div>
+        <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: #F2C230; border-radius: 999px; border: 2px solid #1B1A17;"></span></div>
+        <div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">テニス部</div>
+          <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">毎日の練習に打ち込んだ3年間。基礎を積み上げる時間の価値を、ここで最初に知りました。</p>
         </div>
-      </sc-for>
+      </div>
+      <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
+        <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">高校</div>
+        <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: #D6452C; border-radius: 0; border: 2px solid #1B1A17;"></span></div>
+        <div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">リードクライミング / インターハイ出場水準へ</div>
+          <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">完全な未経験からのスタート。長い停滞期に、感覚ではなく記録と検証で自分を立て直し、全国レベルまで到達しました。</p>
+        </div>
+      </div>
+      <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
+        <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">大学</div>
+        <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: #2C5FD6; border-radius: 999px 0 999px 0; border: 2px solid #1B1A17;"></span></div>
+        <div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">東京理科大学 経営学部 ビジネスエコノミクス学科</div>
+          <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">経済・統計を軸に、数字から意思決定を読み解く力を磨いています。ゼミでは数理ファイナンスを専攻し、RとPythonでモデルを実装。</p>
+        </div>
+      </div>
+      <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
+        <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">大学</div>
+        <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: #F2C230; border-radius: 0; border: 2px solid #1B1A17;"></span></div>
+        <div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">マルタ 語学留学（5週間）</div>
+          <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">多国籍の環境に単身で飛び込み、伝わるまで話し続けた5週間。海外で物事を進める感覚を掴みました。</p>
+        </div>
+      </div>
+      <div data-reveal="" data-path-row="" style="display: grid; grid-template-columns: 120px 40px minmax(0, 1fr); gap: 20px; padding: 26px 0; border-top: 1.5px solid rgba(27,26,23,.18);">
+        <div style="font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; color: #7A756A;">大学 〜 現在</div>
+        <div style="display: flex; justify-content: center;"><span style="width: 16px; height: 16px; background: #1B1A17; border-radius: 999px; border: 2px solid #1B1A17;"></span></div>
+        <div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 19px; letter-spacing: -.01em;">DXクラブ — 中小企業向けIT支援</div>
+          <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.95; color: #45423B; max-width: 620px;">学生でありながら実際の企業の現場に入り、IT支援と基幹システム開発を担当。C#とSQLで手を動かし続けています。</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -266,9 +475,9 @@
       <div data-reveal="" style="font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .18em; color: #8C877C;">06 ／ 連絡先</div>
       <h2 data-reveal="" style="position: relative; margin: 16px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(42px, 9vw, 118px); line-height: .92; letter-spacing: -.045em;">LET'S<br />TALK<span style="color: #D6452C;">.</span></h2>
       <div data-reveal="" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px;">
-        <a href="mailto:hello@example.com" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em;" style-hover="background:#F2EFE6;color:#1B1A17">EMAIL <span style="width: 9px; height: 9px; background: currentColor; border-radius: 999px;"></span></a>
-        <a href="#" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em;" style-hover="background:#F2EFE6;color:#1B1A17">GITHUB</a>
-        <a href="#" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em;" style-hover="background:#F2EFE6;color:#1B1A17">X / TWITTER</a>
+        <a href="mailto:hello@example.com" class="contact-link" style="display: inline-flex; align-items: center; gap: 12px; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; transition: background .2s, color .2s;">EMAIL <span style="width: 9px; height: 9px; background: currentColor; border-radius: 999px;"></span></a>
+        <a href="https://github.com/nyuharuya3" class="contact-link" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; transition: background .2s, color .2s;">GITHUB</a>
+        <a href="#" class="contact-link" style="display: inline-flex; align-items: center; padding: 15px 26px; border: 2px solid #F2EFE6; border-radius: 999px; color: #F2EFE6; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .06em; transition: background .2s, color .2s;">X / TWITTER</a>
       </div>
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-top: 72px; padding-top: 22px; border-top: 1.5px solid rgba(242,239,230,.22); font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8C877C;">
         <span>© 2026 HARUYA MASUI</span>
@@ -278,108 +487,28 @@
   </section>
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:[&quot;#D6452C&quot;,&quot;#2C5FD6&quot;,&quot;#F2C230&quot;],&quot;tsType&quot;:&quot;string[]&quot;,&quot;options&quot;:[[&quot;#D6452C&quot;,&quot;#2C5FD6&quot;,&quot;#F2C230&quot;],[&quot;#E2604A&quot;,&quot;#1F7A5C&quot;,&quot;#F0B429&quot;],[&quot;#C2417E&quot;,&quot;#3D46C4&quot;,&quot;#F2C230&quot;],[&quot;#D95A2B&quot;,&quot;#2E6F8E&quot;,&quot;#E8C547&quot;]],&quot;section&quot;:&quot;見た目&quot;},&quot;shapeLanguage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;バウハウス&quot;,&quot;options&quot;:[&quot;バウハウス&quot;,&quot;すべて丸角&quot;,&quot;ピル/円&quot;,&quot;直線的&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;見た目&quot;},&quot;revealStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;フェードアップ&quot;,&quot;options&quot;:[&quot;フェードアップ&quot;,&quot;横からスライド&quot;,&quot;ズームイン&quot;,&quot;なし&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;動き&quot;}}">
-class Component extends DCLogic {
-  static BASE = ['#D6452C', '#2C5FD6', '#F2C230'];
-
-  applyTheme() {
-    const pal = this.props.palette;
-    const shape = this.props.shapeLanguage || 'バウハウス';
-    const root = this.dcRoot || document;
-
-    // --- palette remap over inline styles ---
-    if (Array.isArray(pal) && pal.length >= 3) {
-      root.querySelectorAll('[style]').forEach((el) => {
-        if (el.dataset.origStyle === undefined) el.dataset.origStyle = el.getAttribute('style');
-        let t = el.dataset.origStyle;
-        Component.BASE.forEach((hex, i) => {
-          t = t.split(hex).join(pal[i]).split(hex.toLowerCase()).join(pal[i]);
-        });
-        if (t !== el.getAttribute('style')) el.setAttribute('style', t);
-      });
-    }
-
-    // --- shape language ---
-    const map = { 'バウハウス': null, 'すべて丸角': '22px', 'ピル/円': '999px', '直線的': '2px' };
-    const r = map[shape];
-    root.querySelectorAll('[data-tile], [style*="border-radius: 26px"], [data-radius-managed]').forEach((el) => {
-      if (el.dataset.radiusManaged === undefined) {
-        el.dataset.radiusManaged = '';
-        el.dataset.origRadius = el.style.borderRadius || '';
+<script>
+  (function () {
+    try {
+      var els = document.querySelectorAll('[data-reveal]');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
       }
-      el.style.borderRadius = r || el.dataset.origRadius;
-    });
-  }
-
-  componentDidUpdate() { this.applyTheme(); }
-
-  componentDidMount() {
-    this.dcRoot = document;
-    this.applyTheme();
-    const rev = this.props.revealStyle || 'フェードアップ';
-    const st = document.createElement('style');
-    st.textContent = rev === 'なし'
-      ? '[data-reveal]{opacity:1 !important;transform:none !important;}'
-      : rev === '横からスライド'
-        ? '[data-reveal]{transform:translateX(-34px) !important;}[data-reveal].in{transform:none !important;}'
-        : rev === 'ズームイン'
-          ? '[data-reveal]{transform:scale(.94) !important;}[data-reveal].in{transform:none !important;}'
-          : '';
-    if (st.textContent) document.head.appendChild(st);
-    this._styleEl = st;
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    const attach = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 70 + 'ms';
-      io.observe(el);
-    });
-    attach();
-    this._t = setTimeout(attach, 600);
-  }
-  componentWillUnmount() { clearTimeout(this._t); }
-  renderVals() {
-    return {
-      icons: [
-        { glyph: '🐧', en: 'PENGUIN', jp: 'ペンギン', bg: '#2C5FD6', ink: '#F2EFE6', radius: '999px 999px 26px 26px' },
-        { glyph: '🧗', en: 'CLIMBING', jp: 'リードクライミング', bg: '#D6452C', ink: '#F7EFE8', radius: '26px' },
-        { glyph: '🎾', en: 'TENNIS', jp: 'テニス', bg: '#F2C230', ink: '#1B1A17', radius: '999px' },
-        { glyph: '🏺', en: 'MUSEUM & ART', jp: '博物館・美術館', bg: '#EAE5D8', ink: '#1B1A17', radius: '26px 26px 26px 999px' },
-        { glyph: '🥗', en: 'CELERY', jp: 'セロリ', bg: '#1B1A17', ink: '#F2C230', radius: '26px' },
-        { glyph: '🎷', en: 'JAZZ', jp: 'ジャズ', bg: '#F2C230', ink: '#1B1A17', radius: '26px 26px 999px 999px' },
-        { glyph: '🎧', en: 'CITY POP', jp: 'シティポップ', bg: '#EAE5D8', ink: '#2C5FD6', radius: '26px' },
-        { glyph: '⚾', en: 'BASEBALL', jp: '野球観戦', bg: '#2C5FD6', ink: '#F2EFE6', radius: '26px 26px 999px 26px' },
-        { glyph: '🍜', en: 'MALATANG', jp: '麻辣湯', bg: '#D6452C', ink: '#F7EFE8', radius: '999px 999px 26px 26px' },
-        { glyph: '🧳', en: 'TRAVEL', jp: '旅行', bg: '#EAE5D8', ink: '#D6452C', radius: '26px' },
-        { glyph: '🧮', en: 'FINANCE', jp: '数理ファイナンス', bg: '#1B1A17', ink: '#F2EFE6', radius: '26px' },
-        { glyph: '🌙', en: 'THE MOON', jp: '月', bg: '#2C5FD6', ink: '#F2C230', radius: '26px 26px 26px 999px' },
-        { glyph: '💬', en: 'MBTI / ENTP', jp: '討論者タイプ', bg: '#D6452C', ink: '#F7EFE8', radius: '999px 999px 26px 26px' },
-        { glyph: '☕', en: 'COFFEE', jp: 'コーヒー', bg: '#EAE5D8', ink: '#1B1A17', radius: '26px' },
-        { glyph: '🫖', en: 'TEA', jp: '紅茶', bg: '#F2C230', ink: '#1B1A17', radius: '26px 26px 26px 999px' }
-      ],
-      works: [
-        { no: 'W-01', glyph: '🏭', ink: '#F7EFE8', title: 'DXクラブ ｜ 中小企業のIT支援と基幹システム開発', desc: '「何から手をつければいいか分からない」段階から伴走し、業務の棚卸しとツール選定を実施。紙とExcelで回っていた作業を、C#とSQLで組んだ基幹システムに置き換えています。', tags: ['C#', 'SQL', '要件定義', '業務改善'], bg: '#F2C230', mark: '#D6452C', radius: '999px' },
-        { no: 'W-02', glyph: '📊', ink: '#D6452C', title: 'ゼミ ｜ 数理ファイナンス', desc: '確率過程やデリバティブ評価を扱うゼミに所属。RとPythonでモデルを実装し、シミュレーションを回しながら、価格の裏側にある構造を検証しています。', tags: ['R', 'Python', '確率モデル', '金融工学'], bg: '#2C5FD6', mark: '#F2C230', radius: '999px 0 999px 0' },
-        { no: 'W-03', glyph: '✈', ink: '#F2EFE8', title: 'マルタ 語学留学（5週間）', desc: '多国籍のクラスに単身で飛び込んだ5週間。英語そのものより「伝わるまで粘る」姿勢が身につき、初対面の相手と関係をつくる度胸がつきました。', tags: ['English', '異文化', '単身'], bg: '#D6452C', mark: '#2C5FD6', radius: '0' },
-        { no: 'W-04', glyph: '🧗', ink: '#F2EFE6', title: 'リードクライミング', desc: '高校で未経験から始め、インターハイ出場水準まで。伸びない時期をどう抜けるかを、体で覚えた3年間でした。', tags: ['継続', '自己分析', '目標設計'], bg: '#EAE5D8', mark: '#2C5FD6', radius: '999px 999px 0 999px' }
-      ],
-      skills: [
-        { group: 'ANALYZE', glyph: '🔬', ink: '#F7EFE8', color: '#D6452C', radius: '999px', items: [ { name: 'R（統計モデリング）', lv: 'Daily', w: '82%' }, { name: 'Python（データ分析）', lv: 'Daily', w: '78%' }, { name: '金融シミュレーション', lv: 'Often', w: '70%' } ] },
-        { group: 'BUILD', glyph: '🧱', ink: '#F2EFE6', color: '#2C5FD6', radius: '0', items: [ { name: 'C#', lv: '実務経験', w: '72%' }, { name: 'SQL', lv: '実務経験', w: '74%' }, { name: '基幹システム設計', lv: 'Often', w: '62%' } ] },
-        { group: 'BUSINESS', glyph: '💹', ink: '#1B1A17', color: '#F2C230', radius: '999px 0 999px 0', items: [ { name: '経営 / ミクロ経済', lv: '専攻', w: '80%' }, { name: '業務ヒアリング', lv: 'Often', w: '70%' }, { name: '課題の言語化', lv: 'Strong', w: '76%' } ] },
-        { group: 'MINDSET', glyph: '🧠', ink: '#F2C230', color: '#1B1A17', radius: '999px 999px 0 0', items: [ { name: '継続する力', lv: 'Strong', w: '90%' }, { name: '未経験から立ち上げる', lv: 'Strong', w: '86%' }, { name: 'チームで動く', lv: 'Often', w: '74%' } ] }
-      ],
-      path: [
-        { year: '中学', title: 'テニス部', desc: '毎日の練習に打ち込んだ3年間。基礎を積み上げる時間の価値を、ここで最初に知りました。', color: '#F2C230', radius: '999px' },
-        { year: '高校', title: 'リードクライミング / インターハイ出場水準へ', desc: '完全な未経験からのスタート。長い停滞期に、感覚ではなく記録と検証で自分を立て直し、全国レベルまで到達しました。', color: '#D6452C', radius: '0' },
-        { year: '大学', title: '東京理科大学 経営学部 ビジネスエコノミクス学科', desc: '経済・統計を軸に、数字から意思決定を読み解く力を磨いています。ゼミでは数理ファイナンスを専攻し、RとPythonでモデルを実装。', color: '#2C5FD6', radius: '999px 0 999px 0' },
-        { year: '大学', title: 'マルタ 語学留学（5週間）', desc: '多国籍の環境に単身で飛び込み、伝わるまで話し続けた5週間。海外で物事を進める感覚を掴みました。', color: '#F2C230', radius: '0' },
-        { year: '大学 〜 現在', title: 'DXクラブ — 中小企業向けIT支援', desc: '学生でありながら実際の企業の現場に入り、IT支援と基幹システム開発を担当。C#とSQLで手を動かし続けています。', color: '#1B1A17', radius: '999px' }
-      ]
-    };
-  }
-}
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el, i) {
+        el.style.transitionDelay = (i % 4) * 70 + 'ms';
+        io.observe(el);
+      });
+    } catch (e) {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
 </script>
-</body>
-</html>

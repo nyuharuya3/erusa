@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>フンボルトペンギン ｜ Keep Climbing</title>
+<meta name="description" content="増井遥矢のポートフォリオサイト内、CURIOSITY INDEXのペンギン詳細ページ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Chivo+Mono:wght@400;600&family=Noto+Emoji:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: #F2EFE6; color: #1B1A17; font-family: "Zen Kaku Gothic New", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #1B1A17; text-decoration: none; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  ::selection { background: #F2C230; color: #1B1A17; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .backbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: flex; justify-content: center; padding: 16px 0; background: linear-gradient(#F2EFE6 72%, rgba(242,239,230,0)); }
+  .backpill { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border: 2px solid #1B1A17; border-radius: 999px; background: rgba(242,239,230,.85); backdrop-filter: blur(10px); font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .08em; box-shadow: 4px 4px 0 #1B1A17; transition: transform .2s, box-shadow .2s; }
+  .backpill:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #1B1A17; }
+  .hero { position: relative; padding: 28px 0 56px; overflow: hidden; }
+  .hero-deco { position: absolute; z-index: 0; }
+  .hero-eyebrow { position: relative; display: flex; align-items: center; gap: 10px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .18em; color: #7A756A; }
+  .hero-eyebrow-dot { display: block; width: 10px; height: 10px; border-radius: 999px; background: #2C5FD6; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 220px; gap: 32px; align-items: center; margin-top: 18px; }
+  .hero-title { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(40px, 8vw, 88px); line-height: .95; letter-spacing: -.04em; text-wrap: balance; }
+  .hero-latin { margin-top: 10px; font-family: 'Chivo Mono', monospace; font-size: 13px; letter-spacing: .04em; color: #7A756A; font-style: italic; }
+  .hero-lede { margin: 20px 0 0; max-width: 60ch; font-size: 15px; line-height: 2; color: #45423B; }
+  .hero-badge { position: relative; display: flex; align-items: center; justify-content: center; width: 220px; height: 220px; border-radius: 999px 999px 26px 26px; border: 2px solid #1B1A17; background: #2C5FD6; box-shadow: 8px 8px 0 rgba(27,26,23,.14); }
+  .hero-badge span { font-family: 'Noto Emoji', monospace; font-size: 108px; line-height: 1; }
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-badge { width: 160px; height: 160px; margin: 0 auto; }
+    .hero-badge span { font-size: 78px; }
+    .hero-deco { display: none; }
+  }
+  .section { padding: 48px 0; }
+  .section-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 28px; }
+  .section-head h2 { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(28px, 4.5vw, 46px); letter-spacing: -.03em; }
+  .section-num { font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .16em; color: #7A756A; }
+  .about-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+  .card { border: 2px solid #1B1A17; border-radius: 24px; background: rgba(255,255,255,.6); backdrop-filter: blur(10px); }
+  .about-lede { grid-column: span 7; padding: 28px; font-size: 15px; line-height: 2; color: #2E2C27; }
+  @media (max-width: 780px) { .about-lede, .stat { grid-column: span 12 !important; } }
+  .stat { grid-column: span 5; padding: 22px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; align-content: center; }
+  .stat-item .label { font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .12em; color: #7A756A; }
+  .stat-item .value { margin-top: 4px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .behavior-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .behavior-card { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .behavior-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 2px solid #1B1A17; border-radius: 999px; background: #F2C230; }
+  .behavior-icon span { font-family: 'Noto Emoji', monospace; font-size: 18px; }
+  .behavior-card h3 { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 17px; }
+  .behavior-card p { margin: 0; font-size: 13px; line-height: 1.9; color: #45423B; }
+  .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .family-card { overflow: hidden; display: flex; flex-direction: column; }
+  .family-top { height: 120px; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid #1B1A17; }
+  .family-top span { font-family: 'Noto Emoji', monospace; font-size: 46px; }
+  .family-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .family-body h3 { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 18px; }
+  .family-body p { margin: 0; font-size: 12.5px; line-height: 1.85; color: #45423B; }
+  .family-tag { align-self: flex-start; margin-top: 4px; padding: 5px 11px; border: 1.5px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 10px; letter-spacing: .06em; }
+  .foot { border-top: 2px solid #1B1A17; padding: 40px 0 56px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .foot-note { font-family: 'Chivo Mono', monospace; font-size: 11px; letter-spacing: .1em; color: #7A756A; }
+  .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border: 2px solid #1B1A17; border-radius: 999px; font-family: 'Chivo Mono', monospace; font-size: 12px; letter-spacing: .06em; transition: background .2s, color .2s; }
+  .btn-outline:hover { background: #1B1A17; color: #F2EFE6; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-deco { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="backbar">
+    <a class="backpill" href="../">← KEEP CLIMBING に戻る</a>
+  </div>
+
+  <header class="hero wrap">
+    <div class="hero-deco" style="top: -10px; right: 60px; width: 130px; height: 130px; border-radius: 999px; background: #F2C230; border: 3px solid #1B1A17; animation: bob 7s ease-in-out infinite;"></div>
+    <div class="hero-deco" style="top: 120px; right: 0; width: 0; height: 0; border-left: 44px solid transparent; border-right: 44px solid transparent; border-bottom: 76px solid #D6452C;"></div>
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>CURIOSITY INDEX ／ 01 ／ PENGUIN</div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-title">フンボルト<br>ペンギン</h1>
+        <div class="hero-latin">Spheniscus humboldti</div>
+        <p class="hero-lede">南米チリからペルーの太平洋岸、栄養豊富な「フンボルト海流」の名を冠した中型のペンギン。数いるペンギンの中でも、この胸に一本の黒い帯が入った顔つきが好みです。</p>
+      </div>
+      <div class="hero-badge"><span>🐧</span></div>
+    </div>
+  </header>
+
+  <section class="section wrap" id="about">
+    <div class="section-head">
+      <h2>ABOUT</h2>
+      <span class="section-num">02 ／ どんなペンギンか</span>
+    </div>
+    <div class="about-grid">
+      <div class="card about-lede">
+        <p style="margin:0;">胸を横切る一本の黒い帯と、目のまわりのピンク色の裸出部（羽が生えていない皮膚の部分）が特徴です。この裸出部には体内の熱をそこから逃がす放熱板のような役割があり、南極ではなく比較的暖かい海岸で暮らすための工夫だと考えられています。海岸の岩場や、自分たちのフン（グアノ）が積もってできた地面に穴を掘って巣を作り、群れで暮らします。</p>
+      </div>
+      <div class="card stat">
+        <div class="stat-item"><div class="label">体長</div><div class="value">56〜70cm</div></div>
+        <div class="stat-item"><div class="label">体重</div><div class="value">2.9〜6kg</div></div>
+        <div class="stat-item"><div class="label">生息地</div><div class="value">チリ〜ペルー</div></div>
+        <div class="stat-item"><div class="label">保全状況</div><div class="value">危急種</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="behavior">
+    <div class="section-head">
+      <h2>BEHAVIOR</h2>
+      <span class="section-num">03 ／ くらしぶり</span>
+    </div>
+    <div class="behavior-grid">
+      <div class="card behavior-card">
+        <div class="behavior-icon"><span>🐟</span></div>
+        <h3>視覚で狩る漁師</h3>
+        <p>群れで泳ぐ小魚（アンチョビ、イワシなど）やイカを主食とし、目で見て追いかける視覚型のハンター。巣から2〜92kmの範囲を泳ぎ、最大で水深54mまで潜ります。</p>
+      </div>
+      <div class="card behavior-card">
+        <div class="behavior-icon"><span>🥚</span></div>
+        <h3>一夫一妻でつがう</h3>
+        <p>一度に2個の卵を産み、41日ほど抱卵します。メスの約半数は年に2回子育てをするほど繁殖に熱心。つがいの結びつきが強いことでも知られています。</p>
+      </div>
+      <div class="card behavior-card">
+        <div class="behavior-icon"><span>⛰️</span></div>
+        <h3>フンの地面に巣を掘る</h3>
+        <p>長年積もった自分たちのフン（グアノ）や岩の隙間、洞穴などに穴を掘って巣を作ります。繁殖期は定住しますが、エサが不足すると群れごと移動することもあります。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="family">
+    <div class="section-head">
+      <h2>FAMILY</h2>
+      <span class="section-num">04 ／ 似ている仲間たち</span>
+    </div>
+    <p style="margin: -12px 0 24px; max-width: 60ch; font-size: 13.5px; line-height: 1.9; color: #45423B;">フンボルトペンギンは「バンデッドペンギン（Spheniscus属）」という4種のグループの一員。どれも胸まわりの黒い帯とピンクの裸出部を持ち、ぱっと見はよく似ています。</p>
+    <div class="family-grid">
+      <article class="card family-card">
+        <div class="family-top" style="background:#F2C230;"><span>🐧</span></div>
+        <div class="family-body">
+          <h3>マゼランペンギン</h3>
+          <p>胸の黒い帯が2本あるのが最大の見分けポイント。アルゼンチン・チリ・フォークランド諸島に生息します。</p>
+          <span class="family-tag">2本帯</span>
+        </div>
+      </article>
+      <article class="card family-card">
+        <div class="family-top" style="background:#D6452C;"><span>🐧</span></div>
+        <div class="family-body">
+          <h3>ケープペンギン</h3>
+          <p>目の上にピンクの斑があり、ロバに似た鳴き声から「ジャッカスペンギン」とも呼ばれる。南アフリカ沿岸に生息。</p>
+          <span class="family-tag">別名ジャッカス</span>
+        </div>
+      </article>
+      <article class="card family-card">
+        <div class="family-top" style="background:#EAE5D8;"><span>🐧</span></div>
+        <div class="family-body">
+          <h3>ガラパゴスペンギン</h3>
+          <p>4種の中で最も小柄。赤道の北側にも生息する、世界で唯一のペンギンです。</p>
+          <span class="family-tag">最小・赤道直下</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="wrap foot">
+    <a class="btn-outline" href="../">← ポートフォリオトップへ</a>
+    <span class="foot-note">CURIOSITY INDEX 01 ／ PENGUIN</span>
+  </div>
+
+</body>
+</html>
